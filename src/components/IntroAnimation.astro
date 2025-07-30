@@ -2,7 +2,7 @@
 const logo = "/images/title/title-white.png";
 const background = "/images/test/main-photo.jpg";
 ---
-<div>
+<div id="camera-mask" class="fixed top-0 w-full h-screen">
     <section>
         <picture id="background-key" class="h-screen scale-155 block overflow-hidden fixed">
             <img id="background-key-image" src={background} class="w-full h-full object-cover">
@@ -21,6 +21,9 @@ const background = "/images/test/main-photo.jpg";
     </div>
 </div>
 
+<img id="logo-transparent" src="/images/logo/logo-transparent.png" alt="Carbolens" class="fixed pointer-events-none" style="opacity: 0; top: 36.3vh; left: 50%; transform: translate(-50%, -50%); width: 28.5vw; height: 45vh; will-change: opacity;" />
+
+
 <script>
   import {gsap} from "gsap";
   import {ScrollTrigger} from "gsap/ScrollTrigger";
@@ -28,8 +31,9 @@ const background = "/images/test/main-photo.jpg";
   gsap.registerPlugin(ScrollTrigger);
 
   const tl = gsap.timeline({
-	ScrollTrigger: {
-		scrub: 1
+    ease: "power2.out",
+	scrollTrigger: {
+		scrub: 1,
 	}
   })
 
@@ -40,13 +44,19 @@ const background = "/images/test/main-photo.jpg";
       scrub: 1
     }
   })
-  .to("#logo", {opacity: 0, duration: 1, scrollTrigger: {
-    scrub: 1
-  }})
-  .to("#footer", {opacity: 0, duration: 1, scrollTrigger: {
-    scrub: 1
-  }})
-  .to("#keep-scrolling", {opacity: 0, duration: 1, scrollTrigger: {
-    scrub: 1
-  }})
+  .to("#logo", {opacity: 0, duration: 1})
+  .to("#camera-mask", {maskSize: "clamp(40vh, 35%, 55vh)", duration: 2}, 0.15)
+  .to("#footer", {opacity: 0, duration: 1}, "<")
+  .to("#keep-scrolling", {opacity: 0, duration: 1}, "<")
+  .to("#background-key", {opacity: 0, duration: 1}, 1.8)
+  .to("#logo-transparent", {opacity: 1, duration: 1}, 2.1);
 </script>
+
+<style>
+    #camera-mask{
+        mask-image: url("/images/logo/logo-transparent.png");
+        mask-position: center 25%;
+        mask-repeat: no-repeat;
+        mask-size: clamp(3000vh, 3500%, 0vh);
+    }
+</style>
