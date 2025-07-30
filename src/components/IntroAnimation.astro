@@ -1,0 +1,52 @@
+---
+const logo = "/images/title/title-white.png";
+const background = "/images/test/main-photo.jpg";
+---
+<div>
+    <section>
+        <picture id="background-key" class="h-screen scale-155 block overflow-hidden fixed">
+            <img id="background-key-image" src={background} class="w-full h-full object-cover">
+        </picture>
+    </section>
+    <div class="fixed flex flex-col items-center justify-between h-screen px-20 py-16 w-full">
+        <header class="flex justify-between w-full">
+            <a href="#">
+                <img id="logo" src={logo} alt="Logo" class="h-12 cursor-pointer"/>
+            </a>
+        </header>
+
+        <footer id="footer" class="flex flex-col items-center">
+            <span class="absolute bottom-10 uppercase text-gray-400 animate-bounce">Desliza hacia abajo</span>
+        </footer>
+    </div>
+</div>
+
+<script>
+  import {gsap} from "gsap";
+  import {ScrollTrigger} from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+	ScrollTrigger: {
+		scrub: 1
+	}
+  })
+
+  tl.to("#background-key", {
+    scale: 1,
+    duration: 1,
+    scrollTrigger: {
+      scrub: 1
+    }
+  })
+  .to("#logo", {opacity: 0, duration: 1, scrollTrigger: {
+    scrub: 1
+  }})
+  .to("#footer", {opacity: 0, duration: 1, scrollTrigger: {
+    scrub: 1
+  }})
+  .to("#keep-scrolling", {opacity: 0, duration: 1, scrollTrigger: {
+    scrub: 1
+  }})
+</script>
