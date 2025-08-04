@@ -2,11 +2,15 @@
 import '../styles/global.css';
 import Layout from '../layouts/Layout.astro';
 import IntroAnimation from '../components/IntroAnimation.astro';
+import AboutSection from '@/components/AboutSection.astro';
 ---
 
 <Layout>
 	<IntroAnimation />
-	 <main class="flex items-center justify-center" style="position: absolute; z-index: 0; top: 260vh; left: 50%; transform: translate(-50%, -50%);">
-		<span>test</span>
-	</main>
+  
+  <main slot="after">
+    <AboutSection />
+  </main>
+</Layout>
+
 </Layout>
