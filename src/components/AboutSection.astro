@@ -1,29 +1,22 @@
 ---
-import { SOCIALS } from "@/constants/global";
+import { INSTAGRAM_INFO } from "@/constants/global";
 import LinkButton from "./LinkButton.astro";
+import InstagramIcon from "./icons/InstagramIcon.astro";
 ---
 
-<section id="about" class="text-center">
+<section class="text-center">
   <h2 class="text-2xl font-bold animate-pulse">Tu pasión, inmortalizada</h2>
   <p class="text-gray-400">Fotógrafo deportivo</p>
-  <div
-    class="p-4 flex flex-wrap flex-row justify-center md:justify-start gap-4"
-  >
-    {
-      SOCIALS.map((social) => {
-        const Icon = social.icon;
-        return (
-          <LinkButton
-            href={social.url}
-            title={social.name}
-            target="_blank"
-            customClass="scrbnll-button"
-          >
-            <Icon slot="before" />
-            {social.name}
-          </LinkButton>
-        );
-      })
-    }
+  <div class="p-4 flex flex-wrap justify-center gap-4">
+    <LinkButton
+      href={INSTAGRAM_INFO.url}
+      title={INSTAGRAM_INFO.name}
+      target="_blank"
+      customClass="bg-gray-800 hover:bg-gray-700"
+    >
+      <INSTAGRAM_INFO.icon slot="before" />
+      @{INSTAGRAM_INFO.username}
+    </LinkButton>
   </div>
 </section>
+

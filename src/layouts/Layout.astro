@@ -7,37 +7,43 @@ import KeepScrolling from "../../public/images/keep-scrolling.svg";
   <SEO/>
   <body>
     <slot />
-    <KeepScrolling id="keep-scrolling" class="fixed bottom-3 right-0 left-0 mx-auto drop-shadown-2xl animate-bounce text-gray-400"/>
-    <div id="content"class="flex items-center justify-center">
+    <KeepScrolling id="keep-scrolling" class="fixed bottom-3 right-0 left-0 mx-auto drop-shadown-2xl animate-bounce text-gray-400 z-10"/>
+    <div id="content" class="fixed w-full items-center justify-center px-12">
       <slot name="after" />
     </div>
   </body>
 </html>
 
 <style is:global>
-	html,
-	body {
+  html,
+  body {
     background: #111111;
-		height: 300vh;
+    height: 300vh;
     overflow-x: hidden;
     overscroll-behavior: none;
     color: white;
     margin: 0;
     width: 100%;
-	}
+  }
 
   #content {
     position: absolute;
-    z-index: 0;
-    top: 260vh;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 240vh;
+    padding-top: 50px;
+    z-index: 10;
   }
 
-  @media (max-width: 1024px) { 
+  @media (min-width: 300px) and (max-width: 768px) { 
     #content {
-      top: 253vh;
+      top: 230vh;
+    }
+  }
+
+   @media (min-width: 769px) and (max-width: 1024px) {
+    #content {
+      top: 232vh;
     }
   }
 </style>
+
 
