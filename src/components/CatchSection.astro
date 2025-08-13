@@ -1,0 +1,35 @@
+---
+import LinkButton from "./LinkButton.astro";
+import { TELEGRAM_INFO } from "@/constants/global";
+---
+
+<section class="py-16 text-white relative overflow-hidden">
+  <div class="container mx-auto flex items-center justify-center px-6 gap-10">
+    
+    <img 
+      src="/images/catch_crop.jpg" 
+      alt="Fotografía deportiva" 
+      class="hidden md:block w-60 object-cover rounded-full shadow-lg"
+    />
+
+    <div class="md:w-1/3 text-center md:text-left">
+      <h3 class="text-2xl font-bold mb-4">¿Crees que te he cazado?</h3>
+      <p class="text-gray-400 mb-6 max-w-md">
+        Si has pasado por delante de mi objetivo, puede que tengas una foto esperándote.  
+        Entra al canal y comprueba si estás entre ellas.
+      </p>
+      <div class="justify-center gap-4">
+        <LinkButton
+          href={TELEGRAM_INFO.url}
+          title={TELEGRAM_INFO.name}
+          target="_blank"
+          customClass="bg-cyan-800 hover:bg-cyan-700"
+        >
+          <TELEGRAM_INFO.icon slot="before" />
+          Únete al canal de Telegram
+        </LinkButton>
+      </div>
+    </div>
+  </div>
+</section>
+
