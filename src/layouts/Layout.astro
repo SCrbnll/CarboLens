@@ -1,15 +1,19 @@
 ---
 import SEO from "./SEO.astro";
 import KeepScrolling from "../../public/images/keep-scrolling.svg";
+import {PORTFOLIO_URL} from "../constants/global";
 ---
 
 <html lang="es">
   <SEO/>
   <body>
-    <slot />
+    <slot id="animation"/>
     <KeepScrolling id="keep-scrolling" class="fixed bottom-3 right-0 left-0 mx-auto drop-shadown-2xl animate-bounce text-gray-400 z-10"/>
-    <div id="content" class="fixed w-full items-center justify-center px-12">
+    <div id="content" class="fixed w-full items-center justify-center px-12 bg-gradient-to-b from-gray-950 to-gray-900">
       <slot name="after" />
+      <footer class="p-6 text-center text-sm">
+        Web creada por <a href={PORTFOLIO_URL} class="font-bold underline" target="_blank">Samuel Carbonell</a>
+      </footer>
     </div>
   </body>
 </html>
@@ -17,33 +21,34 @@ import KeepScrolling from "../../public/images/keep-scrolling.svg";
 <style is:global>
   html,
   body {
-    background: #111111;
-    height: 300vh;
+    background-color: #030712;
+    height: auto;
     overflow-x: hidden;
     overscroll-behavior: none;
     color: white;
     margin: 0;
     width: 100%;
   }
+  #animation {
+    height: 300vh;
+  }
 
   #content {
     position: absolute;
-    top: 240vh;
-    padding-top: 50px;
+    top: 242vh;
     z-index: 10;
   }
 
   @media (min-width: 300px) and (max-width: 768px) { 
     #content {
-      top: 230vh;
+      top: 235vh;
     }
   }
 
    @media (min-width: 769px) and (max-width: 1024px) {
     #content {
-      top: 232vh;
+      top: 234vh;
     }
   }
 </style>
-
 
